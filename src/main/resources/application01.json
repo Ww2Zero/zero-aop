@@ -1,0 +1,36 @@
+[
+  {
+    "beanName": "beforeMethod",
+    "className": "com.zero.aop.BeforeService"
+  },
+  {
+    "beanName": "afterMethod",
+    "className": "com.zero.aop.AfterService"
+  },
+  {
+    "beanName": "testService",
+    "className": "com.zero.aop.TestService",
+    "constructorArgList": [
+      {
+        "index": 1,
+        "name": "serviceName",
+        "value": "testService"
+      }
+    ]
+  },
+  {
+    "beanName": "testServiceProxy",
+    "className": "com.zero.aop.core.ProxyFactoryBean",
+    "target": "testService",
+    "interceptorNames": [
+      "beforeMethod",
+      "beforeMethod",
+      "afterMethod",
+      "afterMethod",
+      "beforeMethod"
+    ]
+  }
+]
+
+
+
