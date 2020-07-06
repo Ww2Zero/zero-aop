@@ -4,6 +4,7 @@ public class TestService {
 
 
     private String serviceName;
+
     public TestService() {
 
     }
@@ -12,8 +13,9 @@ public class TestService {
         this.serviceName = serviceName;
     }
 
-    public String hello(String name) {
+    public String hello(String name) throws InterruptedException {
         String res = "hello " + name;
+        Thread.sleep(1000);
         System.out.println(res);
         return res;
     }

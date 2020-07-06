@@ -1,6 +1,7 @@
 package com.zero.aop.core;
 
 import com.zero.aop.adapter.AfterAdviceAdapter;
+import com.zero.aop.adapter.AroundAdviceAdapter;
 import com.zero.aop.adapter.BeforeAdviceAdapter;
 import com.zero.aop.advisor.*;
 import com.zero.aop.interceptor.AopMethodInterceptor;
@@ -11,7 +12,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class AopBeanFactory extends DefaultBeanFactory {
 
-    private  static ConcurrentHashMap<String, AopBeanDefinition> aopBeanDefinitionMap = new ConcurrentHashMap<>();
+    private static ConcurrentHashMap<String, AopBeanDefinition> aopBeanDefinitionMap = new ConcurrentHashMap<>();
 
     private static ConcurrentHashMap<String, Object> aopBeanMap = new ConcurrentHashMap<>();
 
@@ -55,6 +56,10 @@ public class AopBeanFactory extends DefaultBeanFactory {
                 }
                 if (advice instanceof AfterAdvice) {
                     AopMethodInterceptor interceptor = AfterAdviceAdapter.getInstants().getInterceptor(advice);
+                    advisedSupport.addAopMethodInterceptor(interceptor);
+                }
+                if (advice instanceof AroundAdvice) {
+                    AopMethodInterceptor interceptor = AroundAdviceAdapter.getInstants().getInterceptor(advice);
                     advisedSupport.addAopMethodInterceptor(interceptor);
                 }
             }

@@ -8,6 +8,11 @@
     "className": "com.zero.aop.AfterService"
   },
   {
+    "beanName": "aroundService",
+    "className": "com.zero.aop.AroundService"
+  },
+
+  {
     "beanName": "testService",
     "className": "com.zero.aop.TestService",
     "constructorArgList": [
@@ -24,7 +29,7 @@
     "target": "testService",
     "interceptorNames": [
       "beforeMethod",
-      "beforeMethod",
+      "aroundService",
       "afterMethod",
       "afterMethod",
       "beforeMethod"
